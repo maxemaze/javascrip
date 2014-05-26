@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+
+<script>
+        var width, height, ctx;
+        var x, y;
+		var angle, spread, bool, opaci;
+		var intervalCir, intervalBool, intervalReset, intervalOpac;
+	
+		//----------- SETUP --------------
+		    function setup() {
+				var canvas = document.createElement('canvas');
+				document.body.appendChild(canvas);
+				width = window.innerWidth,
+				height = window.innerHeight,
+				canvas.height = height;
+				canvas.width = width;
+				ctx = canvas.getContext('2d');
+				canvas.style.position = 'absolute';
+				canvas.style.left = '0px';
+				canvas.style.top = '0px';
+				canvas.style.zIndex = '0';
+				
+				x = width/2; y = height/2; s = 25;
+		        angle = 0;
+				opaci = 1;
+		        
+		        intervalCir = setInterval(drawCir, 1000/40);
+		        bool();
+				//intervalBool = setInterval(bool, 1000);
+				resetAngle;
+				//intervalReset = setInterval(resetAngle, 10000);
+				opac();
+				//intervalOpac = setInterval(opac, 2000);
+			}        
+	
+		//----------- circle --------------
+		function circle(x,y,s) {
+		    ctx.strokeStyle = "#000";
+		    ctx.fillStyle = "rgba(228, 63, 139, "+opaci+")";
+		    ctx.beginPath();
+		    ctx.arc(x,y,s,0,Math.PI*2,true); 
+		    ctx.stroke();
+		    ctx.fill();
+		    ctx.fillStyle = "#fff";
+		    ctx.fillRect(x-9,y-11,22,5);
+			ctx.fillRect(x-14,y-2,27,5);
+			ctx.fillRect(x-14,y+7,27,5);
+			ctx.fillRect(x-9,y-8,5,7);
+			ctx.fillRect(x+8,y-8,5,7);
+			ctx.fillRect(x-14,y+1,5,7);
+			ctx.fillRect(x+8,y+1,5,7);
+			}
+				
+		//----------- functionz --------------
+		function bool() { bool = Math.random()*2;}
+		function resetAngle() { angle = 0; }
+		function opac() { opaci = Math.random()*1; }
+	        
+		
+		
+		//----------- DALE BRO-DEEER!! --------------
+	    function drawCir() {
+ 
+	    	if(bool>1){ s+= .2;}else{s-=.2;}
+	    	if(s>35) { s = 25; }
+	    	if(s<25) { s = 25;}
+ 
+	        ctx.fillStyle = "rgba(241,241,241,0.0)";  
+	        ctx.fillRect (0, 0, width, height);
+		    	    
+		    angle += .1; spread = 1;
+	        xC = spread * angle * Math.cos(angle);
+	        yC = spread * angle * Math.sin(angle);
+		    if (bool > 1) {
+				angle -= .2;
+		    }
+		    
+		    circle(x+=xC,y+=yC,s);		
+	    }
+		
+ 
+			
+	        width = window.innerWidth;
+	        height = window.innerHeight;
+ 
+	    
+		setup();
+</script>
+
+</body>
+</html>
