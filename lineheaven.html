@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+
+<script>
+	var r, g, b;
+	var canvas, ctx;
+	var t1, t2;
+	
+	var wid = window.innerWidth;
+	var hei = window.innerHeight;
+	var rectX = 0;
+	var rhomX = 0;
+	var rhomY = 0;
+	
+	function setup() {
+		canvas = document.createElement('canvas');
+		canvas.height = window.innerHeight; canvas.width = wid;
+		document.body.appendChild(canvas);
+		ctx = canvas.getContext('2d');
+		
+		t1 = setInterval(drawMyRhom, 100);
+	}
+	
+	function drawMyRect() { 
+		//r = Math.floor(Math.random()*256);
+		r = Math.floor(Math.random()*100)+50;
+		g = Math.floor(Math.random()*256);
+		b = Math.floor(Math.random()*256);
+		
+		ctx.fillStyle = "rgb("+r+","+150+","+255+")";
+		ctx.fillRect((rectX)*200, 100, Math.floor(Math.random()*50)+20, 100);
+		
+		rectX++;
+		rectX %= (wid/200);
+	}
+	
+	function drawMyRhom() {
+		//r = Math.floor(Math.random()*256);
+		r = Math.floor(Math.random()*100)+50;
+		g = Math.floor(Math.random()*256);
+		b = Math.floor(Math.random()*256);
+		
+		ctx.lineWidth = 5;
+		
+		var x1 = wid-(rhomX*200);
+		var y1 = hei-(rhomY*200);
+		var len = Math.floor(Math.random()*50)+20;
+		
+		ctx.fillStyle = "rgb("+r+","+150+","+255+")";
+		ctx.moveTo(x1,y1);
+		ctx.lineTo(x1-(Math.sin(30)*len), y1-(Math.cos(30)*len));
+		ctx.stroke();
+		
+		rhomX++;
+		rhomY++;
+		rhomX %= (hei/100);
+		rhomY %= (hei/100);
+		
+	}
+		
+	
+	setup();
+	
+</script>
+
+</body>
+</html>
