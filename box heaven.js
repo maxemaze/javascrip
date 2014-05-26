@@ -20,7 +20,7 @@
 		b = Math.floor(Math.random()*256);
 		
 		ctx.fillStyle = "rgb("+r+","+g+","+b+")";
-		ctx.fillRect((count)*200, 100, Math.floor(Math.random()*100)+50, 100);
+		ctx.fillRect((count)*200, 100, Math.floor(Math.random()*50)+100, 100);
 		
 		count++;
 		count %= (wid/200);
